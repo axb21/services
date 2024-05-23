@@ -11,13 +11,6 @@
 		</sequential>
 	</macrodef>
 
-	<scriptdef name="uppercase" language="javascript">
-		<attribute name="property" />
-		<attribute name="string" />
-
-		project.setProperty(attributes.get("property"), attributes.get("string").toUpperCase());
-	</scriptdef>
-
 	<!-- set global properties for this build -->
 	<property name="services.trunk" value=".." />
 	<property name="build.dir.name" value="build" />
@@ -108,6 +101,19 @@
 	</target>
 
 	<target name="deploy_tenant">
+		<path id="nashorn.classpath">
+			<pathelement location="../../lib/nashorn-core-15.4.jar" />
+			<pathelement location="../../lib/asm-9.7.jar" />
+			<pathelement location="../../lib/asm-util-9.7.jar" />
+		</path>
+
+		<scriptdef name="uppercase" language="javascript" manager="javax" classpathref="nashorn.classpath">
+			<attribute name="property" />
+			<attribute name="string" />
+
+			project.setProperty(attributes.get("property"), attributes.get("string").toUpperCase());
+		</scriptdef>
+
 		<basename property="tenant.shortname" file="${basedir}" />
 		<uppercase property="tenant.shortname.upper" string="${tenant.shortname}" />
 		<propertycopy name="tenant.create.disabled" from="env.CSPACE_${tenant.shortname.upper}_CREATE_DISABLED_OPT" />
