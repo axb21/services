@@ -23,15 +23,15 @@
             <groupId>org.collectionspace.services</groupId>
             <artifactId>org.collectionspace.services.jaxb</artifactId>
             <version>${project.version}</version>
-        </dependency>        
+        </dependency>
     </dependencies>
     <build>
         <finalName>collectionspace-services-vocabulary-jaxb</finalName>
         <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>                
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -40,4 +40,3 @@
         </plugins>
     </build>
 </project>
-

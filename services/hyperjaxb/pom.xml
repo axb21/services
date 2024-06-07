@@ -67,8 +67,8 @@
 			<artifactId>dom4j</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.jvnet.hyperjaxb3</groupId>
-		    <artifactId>hyperjaxb3-ejb-runtime</artifactId>
+			<groupId>org.jvnet.jaxb</groupId>
+			<artifactId>hyperjaxb3-ejb-runtime</artifactId>
 		</dependency>
   </dependencies>
 
@@ -77,10 +77,10 @@
     <defaultGoal>install</defaultGoal>
 
     <plugins>
-		<plugin>
-		    <groupId>org.jvnet.hyperjaxb3</groupId>
-		    <artifactId>maven-hyperjaxb3-plugin</artifactId>
-		</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb</groupId>
+				<artifactId>hyperjaxb3-maven-plugin</artifactId>
+			</plugin>
     </plugins>
   </build>
 

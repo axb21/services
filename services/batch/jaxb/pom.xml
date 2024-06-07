@@ -7,31 +7,31 @@
         <groupId>org.collectionspace.services</groupId>
         <version>${revision}</version>
     </parent>
-    
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.collectionspace.services.batch.jaxb</artifactId>
     <name>services.batch.jaxb</name>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.collectionspace.services</groupId>
             <artifactId>org.collectionspace.services.jaxb</artifactId>
             <version>${project.version}</version>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.collectionspace.services</groupId>
             <artifactId>org.collectionspace.services.hyperjaxb</artifactId>
             <version>${project.version}</version>
-        </dependency>        
+        </dependency>
     </dependencies>
-    
+
     <build>
         <finalName>collectionspace-services-batch-jaxb</finalName>
         <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -40,4 +40,3 @@
         </plugins>
     </build>
 </project>
-

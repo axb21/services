@@ -43,7 +43,7 @@
             <artifactId>hibernate-c3p0</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jvnet.hyperjaxb3</groupId>
+            <groupId>org.jvnet.jaxb</groupId>
             <artifactId>hyperjaxb3-ejb-runtime</artifactId>
         </dependency>
         <dependency>
@@ -55,31 +55,6 @@
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
         </dependency>
-<!--
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jvnet.hyperjaxb3</groupId>
-            <artifactId>hyperjaxb3-ejb-runtime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
-        <dependency>
-			<groupId>org.collectionspace.services</groupId>
-			<artifactId>org.collectionspace.services.hyperjaxb</artifactId>
-			<version>${project.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>jaxb-impl</artifactId>
-					<groupId>com.sun.xml.bind</groupId>
-				</exclusion>
-			</exclusions>
-        </dependency>
--->
     </dependencies>
 
     <build>
@@ -87,9 +62,9 @@
         <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.hyperjaxb3</groupId>
-                <artifactId>maven-hyperjaxb3-plugin</artifactId>
-            </plugin>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>hyperjaxb3-maven-plugin</artifactId>
+        </plugin>
         </plugins>
     </build>
 

@@ -2,16 +2,16 @@
 
 <!--
  pom.xml
- 
+
  A Maven 2 project file for the 'jaxb' module of the ID Service project.
 
  This document is a part of the source code and related artifacts
  for CollectionSpace, an open source collections management system
  for museums and related institutions:
- 
+
  http://www.collectionspace.org
  http://wiki.collectionspace.org
- 
+
  Based on work by Sanjay Dalal and Richard Millet.
 
  $LastChangedBy: aron $
@@ -45,8 +45,8 @@
     <defaultGoal>install</defaultGoal>
     <plugins>
       <plugin>
-        <groupId>org.jvnet.jaxb2.maven2</groupId>
-        <artifactId>maven-jaxb2-plugin</artifactId>
+        <groupId>org.jvnet.jaxb</groupId>
+        <artifactId>jaxb-maven-plugin</artifactId>
       </plugin>
       <plugin>
 	    <groupId>org.codehaus.mojo</groupId>
@@ -55,4 +55,3 @@
     </plugins>
   </build>
 </project>
-
