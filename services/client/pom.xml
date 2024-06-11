@@ -35,11 +35,13 @@
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
         </dependency>
-    	<dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.2.1</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -81,8 +83,6 @@
         <dependency>
 		    <groupId>com.sun.xml.bind</groupId>
 		    <artifactId>jaxb-core</artifactId>
-		    <type>jar</type>
-		    <scope>compile</scope>
 		</dependency>
         <dependency>
             <groupId>org.dom4j</groupId>

@@ -173,10 +173,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-		</dependency>
-		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+	</dependency>
+<dependency>
 			<groupId>javax.security</groupId>
 			<artifactId>jaas</artifactId>
 			<version>1.0.01</version>

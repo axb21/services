@@ -24,7 +24,11 @@
       <optional>true</optional>
       <version>${project.version}</version>
     </dependency>
-  </dependencies>
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+    </dependency>
+</dependencies>
 
   <build>
     <finalName>collectionspace-services-chronology-jaxb</finalName>

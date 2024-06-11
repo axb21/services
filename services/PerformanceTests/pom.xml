@@ -52,7 +52,11 @@
             <artifactId>org.collectionspace.services.relation.client</artifactId>
             <version>${project.version}</version>
         </dependency>
-    <!-- External dependencies -->
+        <!-- External dependencies -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
