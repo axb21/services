@@ -5,7 +5,7 @@ http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistenc
         <class>org.collectionspace.services.authentication.User</class>
         <class>org.collectionspace.services.authorization.Role</class>
         <properties>
-            <property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>
+            <property name="hibernate.cfg_xml_file" value="hibernate.cfg.xml"/>
 
             <!--property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.max_fetch_depth" value="3"/>

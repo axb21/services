@@ -19,7 +19,7 @@
 		<jaxb.version>2.2.11</jaxb.version>
 		<resteasy.version>3.0.20.Final</resteasy.version>
 		<mysql.driver.version>8.0.28</mysql.driver.version>
-		<postgres.driver.version>42.3.9</postgres.driver.version>
+		<postgres.driver.version>42.7.3</postgres.driver.version>
 		<tomcat.version>8.5.40</tomcat.version>
 		<!-- The default life cycle policy for Nuxeo document types -->
 		<Lifecycle>cs_default</Lifecycle>
@@ -268,8 +268,9 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.1</version>
+					<version>3.3.0</version>
 					<configuration>
+						<classpathScope>compile</classpathScope>
 						<systemProperties>
 							<systemProperty>
 								<key>log4j.configurationFile</key>
@@ -465,25 +466,18 @@
 			</dependency>
 			<dependency>
 				<groupId>javax.persistence</groupId>
-				<artifactId>persistence-api</artifactId>
-				<version>1.0</version>
+				<artifactId>javax.persistence-api</artifactId>
+				<version>2.2</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-entitymanager</artifactId>
-				<version>3.4.0.GA</version>
-				<exclusions>
-					<!-- Exclude dom4j:dom4j so we can upgrade to org.dom4j:dom4j. -->
-					<exclusion>
-						<groupId>dom4j</groupId>
-						<artifactId>dom4j</artifactId>
-					</exclusion>
-				</exclusions>
+				<artifactId>hibernate-core</artifactId>
+				<version>5.6.15.Final</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-c3p0</artifactId>
-				<version>3.6.10.Final</version>
+				<version>5.6.15.Final</version>
 			</dependency>
 			<dependency>
 				<!-- for time type adapters -->

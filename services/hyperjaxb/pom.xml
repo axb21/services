@@ -54,18 +54,18 @@
 	</dependency>
 <!-- Dependencies for HyperJaxB -->
 		<dependency>
-		    <groupId>javax.persistence</groupId>
-		    <artifactId>persistence-api</artifactId>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-entitymanager</artifactId>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
 		</dependency>
 		<!-- Needed by hibernate-entitymanager, since we excluded dom4j:dom4j in order to upgrade to org.dom4j:dom4j -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.dom4j</groupId>
 			<artifactId>dom4j</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.jvnet.jaxb</groupId>
 			<artifactId>hyperjaxb3-ejb-runtime</artifactId>

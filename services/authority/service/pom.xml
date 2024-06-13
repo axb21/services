@@ -146,7 +146,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
+			<artifactId>javax.persistence-api</artifactId>
 		</dependency>
 
 		<dependency>
@@ -174,13 +174,13 @@
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
+			<artifactId>hibernate-core</artifactId>
 		</dependency>
 		<!-- Needed by hibernate-entitymanager and nuxeo-platform-imaging-core, since we excluded dom4j:dom4j in order to upgrade to org.dom4j:dom4j -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.dom4j</groupId>
 			<artifactId>dom4j</artifactId>
-		</dependency>
+		</dependency> -->
 		<!-- jboss -->
 		<dependency>
 			<groupId>jboss</groupId>
