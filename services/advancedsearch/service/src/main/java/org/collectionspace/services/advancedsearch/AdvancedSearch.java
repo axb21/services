@@ -23,6 +23,7 @@ import org.collectionspace.services.advancedsearch.model.ResponsibleDepartmentsL
 import org.collectionspace.services.advancedsearch.model.TitleGroupListModel;
 import org.collectionspace.services.client.AdvancedSearchClient;
 import org.collectionspace.services.client.CollectionObjectClient;
+import org.collectionspace.services.client.CollectionSpaceClient;
 import org.collectionspace.services.client.IQueryManager;
 import org.collectionspace.services.client.PayloadInputPart;
 import org.collectionspace.services.client.PoxPayloadIn;
@@ -31,6 +32,7 @@ import org.collectionspace.services.collectionobject.CollectionobjectsCommon;
 import org.collectionspace.services.common.AbstractCollectionSpaceResourceImpl;
 import org.collectionspace.services.common.UriInfoWrapper;
 import org.collectionspace.services.common.context.RemoteServiceContextFactory;
+import org.collectionspace.services.common.context.ServiceContext;
 import org.collectionspace.services.common.context.ServiceContextFactory;
 import org.collectionspace.services.jaxb.AbstractCommonList;
 import org.collectionspace.services.jaxb.AbstractCommonList.ListItem;
@@ -46,9 +48,9 @@ import org.w3c.dom.Element;
 public class AdvancedSearch
 		extends AbstractCollectionSpaceResourceImpl<AdvancedsearchListItem, AdvancedsearchListItem> {
 	private final Logger logger = LoggerFactory.getLogger(AdvancedSearch.class);
-	private final CollectionObjectResource cor = new CollectionObjectResource();
+	private CollectionObjectResource cor = null;
 	private CollectionObjectClient collectionObjectClient = null;
-	private final MediaResource mr = new MediaResource();
+	private MediaResource mr = null;
 
 	public AdvancedSearch() {
 		super();
@@ -72,16 +74,23 @@ public class AdvancedSearch
 		// objects, which have more fields
 		// TODO the resource and client are both singletons, are they not? If so we
 		// should create them once rather than at each call to getList
+		cor = new CollectionObjectResource();
 		AbstractCommonList collectionObjectList = cor.getList(uriInfo);
 		List<ListItem> collectionObjectListItems = collectionObjectList.getListItem();
 		try {
+			// NOTE: this is probably a bug, but CollectionObjectClient is defaulting to
+			// admin@botgarden instead of whatever user is logged in or configured in
+			// collectionspace-client.properties. The code below is a hack that addresses this.
 			collectionObjectClient = new CollectionObjectClient();
+			AdvancedSearchClient as = new AdvancedSearchClient();
+			collectionObjectClient.setAuth(true, as.getProperty(CollectionSpaceClient.USER_PROPERTY), true,
+					collectionObjectClient.getProperty(CollectionSpaceClient.PASSWORD_PROPERTY), true);
 		} catch (Exception e) {
 			// FIXME need better error handling
 			logger.error("advancedsearch: could not create CollectionObjectClient", e);
 			return resultsList;
 		}
-
+		
 		// FIXME: is there no better way to do this?
 		HashMap<String, String> collectionObjectValuesMap = new HashMap<String, String>();
 		for (ListItem item : collectionObjectListItems) {
@@ -125,9 +134,9 @@ public class AdvancedSearch
 				listItem.setBriefDescription(BriefDescriptionListModel
 						.briefDescriptionListToDisplayString(collectionObject.getBriefDescriptions()));
 				listItem.setComputedCurrentLocation(collectionObject.getComputedCurrentLocation()); // "Computed Current
-																									// Location: Display
-																									// full string" from
-																									// https://docs.google.com/spreadsheets/d/103jyxa2oCtt8U0IQ25xsOyIxqwKvPNXlcCtcjGlT5tQ/edit?gid=0#gid=0
+				// Location: Display
+				// full string" from
+				// https://docs.google.com/spreadsheets/d/103jyxa2oCtt8U0IQ25xsOyIxqwKvPNXlcCtcjGlT5tQ/edit?gid=0#gid=0
 				listItem.setObjectName(
 						ObjectNameListModel.objectNameListToDisplayString(collectionObject.getObjectNameList()));
 				listItem.setTitle(
@@ -188,6 +197,7 @@ public class AdvancedSearch
 
 	private List<String> findBlobCsids(String csid, UriInfoWrapper wrappedUriInfo) {
 		// FIXME: is there no better way to do this?
+		mr = new MediaResource();
 		MultivaluedMap<String, String> wrappedQueryParams = wrappedUriInfo.getQueryParameters();
 		wrappedQueryParams.clear();
 		wrappedQueryParams.add(IQueryManager.SEARCH_RELATED_TO_CSID_AS_SUBJECT, csid);
